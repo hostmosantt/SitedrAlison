@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-petroleum: #0B3A53;
+  --color-brand-darkblue: #0F172A;
+  --color-brand-ice: #F8FAFC;
+  --color-brand-mint: #7CCBC5;
+  --color-brand-gold: #C8A96A;
+  
+  --font-sans: 'Liter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+body {
+  background-color: var(--color-brand-ice);
+  color: var(--color-brand-darkblue);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-lg;
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-slate-100 shadow-xl rounded-[20px] transition-all duration-300;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}

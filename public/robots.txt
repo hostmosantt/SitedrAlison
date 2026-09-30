@@ -1,0 +1,6 @@
+# robots.txt — Dr. Alison Mota Rabelo
+User-agent: *
+Allow: /
+Disallow: /assets/
+
+Sitemap: https://sttudioals.com.br/sitemap.xml
