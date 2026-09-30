@@ -17,7 +17,7 @@ export function FAQ() {
     },
     {
       q: "Como funciona o pagamento?",
-      a: "Aceitamos Crédito, Débito, Pix e boleto bancário. Parcelamos no cartão. Para pagamento à vista, temos condições especiais. A gente conversa sobre isso depois da avaliação, sem pressão."
+      a: "Crédito, Débito, Pix e boleto bancário."
     }
   ];
 
