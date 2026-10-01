@@ -4,11 +4,34 @@ import { useRef, useEffect } from 'react';
 export function Differentials() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Vídeo em autoplay nativo não precisa mais do IntersectionObserver
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Garante que o vídeo está mutado para o autoplay funcionar em dispositivos móveis
+    video.muted = true;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch((err) => {
+              console.log("Autoplay prevent by browser", err);
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.unobserve(video);
+      observer.disconnect();
+    };
   }, []);
 
   const features = [
